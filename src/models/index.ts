@@ -12,3 +12,7 @@ export interface Crew extends Common {
     name: string
     role: string
 }
+
+export interface ResponseList<T> {
+    data: T[]
+}

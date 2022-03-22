@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { CommonContext } from "../context/context";
+import { CommonContext, Context } from "../context/context";
 
 const useCommonState = () => {
-    const { context, updateList, updateSelectedCharacter } = useContext(CommonContext) || {}
-    
-    return { context, updateList, updateSelectedCharacter }
+    const { context, updateListAndType = () => { }, updateSelectedCharacter = () => { } } = useContext(CommonContext) || {}
+    const castedContext = context as Context
+    return { context: castedContext, updateListAndType, updateSelectedCharacter }
 }
 
-export default useCommonState
+export default useCommonState;

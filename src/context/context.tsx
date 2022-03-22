@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import { Character, Crew } from "../models";
 
 const initialState: Context = {
     list: [],
+    type: 'crew',
     selectedCharacter: {
         __id: '',
         __v: '',
@@ -11,14 +12,19 @@ const initialState: Context = {
     },
 }
 
-type Context = {
+type ListType = 'crew'| 'character'
+
+export type Context = {
     list: Character[] | Crew[] | [],
+    type: ListType
     selectedCharacter: Character
 }
 
+
+
 interface CommonContextInterface {
     context: Context,
-    updateList: (List: Character[] | Crew[]) => void
+    updateListAndType: (List: Character[] | Crew[], type: ListType) => void
     updateSelectedCharacter: (character: Character) => void
 }
 
@@ -28,21 +34,21 @@ const CommonContextProvider: React.FC = ({ children }) => {
 
     const [context, updateContext] = useState<Context>(initialState)
 
-    const updateList = (list: Character[] | Crew[]) => {
-        updateContext(prev => ({...prev, list: list}))
-    }
+    const updateListAndType = useCallback((list: Character[] | Crew[], type: ListType) => {
+        updateContext(prev => ({ ...prev, list, type }))
+    }, [])
 
-    const updateSelectedCharacter = (character: Character) => {
-        updateContext(prev => ({...prev, selectedCharacter: character}))
-    }
+    const updateSelectedCharacter = useCallback((character: Character) => {
+        updateContext(prev => ({ ...prev, selectedCharacter: character }))
+    }, [])
 
     return (
         <>
-            <CommonContext.Provider value={{ context, updateList, updateSelectedCharacter }}>
+            <CommonContext.Provider value={{ context, updateListAndType, updateSelectedCharacter }}>
                 {children}
             </CommonContext.Provider>
         </>
-    )    
+    )
 }
 
 export default CommonContextProvider
