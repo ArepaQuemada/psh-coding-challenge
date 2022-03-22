@@ -1,13 +1,15 @@
+type Methods = 'get'
+
 const config = {
-    baseUrl: 'https://www.officeapi.dev',
+    baseUrl: 'https://www.officeapi.dev/api',
     endpoints: {
         characters: {
-            name: '/characters/',
-            method: 'get'   
+            name: '/characters',
+            method: 'get' as Methods   
         },
         crew: {
-            name: '/crew/',
-            method: 'get'
+            name: '/crew',
+            method: 'get' as Methods
         }
     }
 }

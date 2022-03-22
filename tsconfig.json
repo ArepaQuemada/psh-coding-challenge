@@ -7,6 +7,7 @@
         "esnext"
       ],
       "allowJs": true,
+      "noUnusedLocals": false,
       "skipLibCheck": true,
       "esModuleInterop": true, 
       "allowSyntheticDefaultImports": true,
@@ -19,8 +20,7 @@
       "noEmit": true,
       "jsx": "react-jsx",
       "sourceMap": true, 
-      "declaration": true, 
-      "noUnusedLocals": true, 
+      "declaration": true,  
       "noUnusedParameters": true,
       "incremental": true,
       "noFallthroughCasesInSwitch": true
