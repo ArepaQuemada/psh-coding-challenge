@@ -10,6 +10,10 @@ const config = {
         crew: {
             name: '/crew',
             method: 'get' as Methods
+        },
+        quotes: {
+            name: '/quotes',
+            method: 'get' as Methods
         }
     }
 }

@@ -14,6 +14,15 @@ export interface Crew extends Common {
     role: string
 }
 
+export interface Quotes extends Common {
+    content: string,
+    character: Character
+}
+
 export interface ResponseList<T> {
     data: T[]
+}
+
+export interface ResponseData<T> {
+    data: T
 }

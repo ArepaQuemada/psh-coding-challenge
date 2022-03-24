@@ -1,6 +1,8 @@
 import { AxiosResponse } from "axios";
 import { useState, useEffect, useCallback, useRef } from "react"
 import axios from "../services/axios";
+import errors from "../pages/errors";
+import { useNavigate } from "react-router-dom";
 
 interface IUseAsync {
     url: string
@@ -9,12 +11,13 @@ interface IUseAsync {
     body?: any
 }
 
-function useAsync<T>( { url, method, callOnLoad }: IUseAsync) {
+function useAsync<T>({ url, method, callOnLoad }: IUseAsync) {
     const [data, setData] = useState<AxiosResponse<T>>()
+    const navigate = useNavigate()
     const [isLoading, setLoading] = useState(false)
     let mounted = useRef(true)
 
-    const doFetch = useCallback(async(abortController) => {
+    const doFetch = useCallback(async (abortController) => {
         if (!mounted) {
             return
         }
@@ -24,7 +27,7 @@ function useAsync<T>( { url, method, callOnLoad }: IUseAsync) {
                 signal: abortController.signal
             })
             setData(response)
-        } catch(err) {
+        } catch (err) {
             if (abortController.signal.aborted) {
                 console.log('aborted async task')
             }
@@ -44,7 +47,12 @@ function useAsync<T>( { url, method, callOnLoad }: IUseAsync) {
         }
     }, [callOnLoad, doFetch])
 
-    return {data, doFetch, isLoading}
+    if (data?.status !== 200) {
+        const toRedirectIfError = errors[data?.status ?? 'default']
+        navigate(toRedirectIfError)
+    }
+
+    return { data, doFetch, isLoading }
 }
 
 export default useAsync

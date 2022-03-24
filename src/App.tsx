@@ -5,6 +5,8 @@ import Crew from "./pages/crew/Crew";
 import Characters from "./pages/characters/Characters";
 import './scss/common.scss';
 import Quotes from "./pages/quotes";
+import CommonError from "./pages/errors/common";
+import Error404 from "./pages/errors/404";
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
             <Route path='crew' element={<Crew />} />
             <Route path='characters' element={<Characters />} />
             <Route path='/characters/:id' element={<Quotes />}/>
+            <Route path='/error' element={<CommonError />} />
             <Route index element={<Crew />} />
+            <Route path='*' element={<Error404 />} />
           </Route>
         </Routes>
       </CommonContextProvider>
