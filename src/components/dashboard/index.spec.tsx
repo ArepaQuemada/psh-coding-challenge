@@ -6,14 +6,14 @@ import { Character } from "../../models";
 
 const list: Character[] = [
     {
-        __id: '',
+        _id: '',
         __v: '',
         fullname: 'Juan Bermudez',
         firstname: 'Juan',
         lastname: 'Bermudez'
     },
     {
-        __id: '',
+        _id: '',
         __v: '',
         firstname: 'Ana',
         lastname: 'Perez',

@@ -1,0 +1,29 @@
+.list-container {
+    margin-top: 2rem;
+    background-color: var(--ligth-white);
+    border-radius: 10px;
+    padding: 1rem;
+
+    .list-container__list {
+        list-style-type: none;
+        padding-inline-start: 0;
+    }
+
+    .list-container__list-block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .list-container__section {
+        width: 50%;
+    }
+
+    .list-container__section--full{
+        width: 100%;
+    }
+
+    .list-container__small {
+        color: var(--secondary-text);
+    }
+}

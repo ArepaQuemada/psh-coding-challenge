@@ -4,6 +4,7 @@ import Layout from "./pages/Layout";
 import Crew from "./pages/crew/Crew";
 import Characters from "./pages/characters/Characters";
 import './scss/common.scss';
+import Quotes from "./pages/quotes";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route path='crew' element={<Crew />} />
             <Route path='characters' element={<Characters />} />
+            <Route path='/characters/:id' element={<Quotes />}/>
             <Route index element={<Crew />} />
           </Route>
         </Routes>

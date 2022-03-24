@@ -6,7 +6,7 @@ const initialState: Context = {
     filterList: [],
     type: 'crew',
     selectedCharacter: {
-        __id: '',
+        _id: '',
         __v: '',
         firstname: '',
         lastname: ''

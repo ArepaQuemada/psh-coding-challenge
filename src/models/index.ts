@@ -1,5 +1,5 @@
 interface Common {
-    __id: string
+    _id: string
     __v: string
     fullname?: string
 }
