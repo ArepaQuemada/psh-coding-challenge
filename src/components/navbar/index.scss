@@ -1,6 +1,21 @@
 .navbar {
-    height: 5vw;
     padding: 1rem;
+
+    .navbar__item-container {
+        display: flex;
+        justify-content: flex-start;
+        list-style-type: none;
+    }
+
+    .navbar__item {
+        display: block;
+        margin: 0 12px 0 12px;
+    }
+
+    .navbar__item--color-primary {
+        text-decoration: none;
+        color: var(--text-icons);
+    }
 }
 
 .navbar__color--primary {

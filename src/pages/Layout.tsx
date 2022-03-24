@@ -1,20 +1,23 @@
 import { Link, Outlet } from "react-router-dom";
 import Navbar from "../components/navbar";
+import Container from "../components/container";
 
 const Layout = () => {
     return (
         <>
             <Navbar>
-                <ul>
-                    <li>
-                        <Link to='crew'>Crew</Link>
+                <ul className="navbar__item-container">
+                    <li className="navbar__item">
+                        <Link className="navbar__item--color-primary" to='crew'>Crew</Link>
                     </li>
-                    <li>
-                        <Link to='characters'>Characters</Link>
+                    <li className="navbar__item">
+                        <Link className="navbar__item--color-primary" to='characters'>Characters</Link>
                     </li>
                 </ul>
             </Navbar>
-            <Outlet />
+            <Container>
+                <Outlet />
+            </Container>
         </>
     )
 }

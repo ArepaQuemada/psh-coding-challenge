@@ -1,8 +1,18 @@
 @import 'colors';
 @import 'font';
 
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
 body {
     margin: 0;
-    box-sizing: border-box;
+}
+
+.divider {
+    color: var(--divider-color)
 }
  

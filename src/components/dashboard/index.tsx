@@ -1,37 +1,33 @@
-import { Crew, Character } from "../../models";
-import { useCommonState } from "../../hooks";
+import List from "../list";
 import './index.scss'
-
-const typedList = {
-    crew: (list: Crew[] | Character[]) => {
-        const castedList = list as Crew[]
-        return castedList.map((el) => (
-            <ul key={el.name}>
-                <li>{el.name} {el.role}</li>
-            </ul>
-        ))
-    },
-    character: (list: Crew[] | Character[]) => {
-        const castedList = list as Character[]
-        return castedList.map(el => (
-            <ul key={el.firstname.concat(el.lastname)}>
-                <li>{el.firstname} {el.lastname}</li>
-            </ul>
-        ))
-    }
-}
+import { useCommonState } from "../../hooks";
+import { sort } from "../../utilities";
 
 const Dashboard = () => {
-    const { context } = useCommonState()
+    const { context, updateList } = useCommonState()
+
+    const onChangeRadio = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const sortedList = context.list.sort((a, b) => {
+            return sort[e.target.value](a.fullname, b.fullname)
+        })
+        updateList(sortedList)
+    }
 
     return (
         <>
             <section className="dashboard">
                 <h1>Dashboard</h1>
-                {typedList[context.type](context.list)}
+                <fieldset>
+                    <legend>Ordenar por</legend>
+                    <input type='radio' id='name' name='sort_by' value='name' onChange={onChangeRadio}/>
+                    <label htmlFor='name'>Nombre</label>
+                    <input type='radio' id='lastname' name='sort_by' value='lastname' onChange={onChangeRadio}/>
+                    <label htmlFor='lastname'>Apellido</label>
+                </fieldset>
+                <List />
             </section>
         </>
     )
 }
 
-export default Dashboard;
+export default Dashboard

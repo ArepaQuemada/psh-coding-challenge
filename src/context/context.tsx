@@ -26,6 +26,7 @@ interface CommonContextInterface {
     context: Context,
     updateListAndType: (List: Character[] | Crew[], type: ListType) => void
     updateSelectedCharacter: (character: Character) => void
+    updateList: (List: Character[] | Crew[]) => void
 }
 
 export const CommonContext = React.createContext<CommonContextInterface | null>(null)
@@ -42,9 +43,13 @@ const CommonContextProvider: React.FC = ({ children }) => {
         updateContext(prev => ({ ...prev, selectedCharacter: character }))
     }, [])
 
+    const updateList = useCallback((list: Character[] | Crew[]) => {
+        updateContext(prev => ({...prev, list}))
+    }, [])
+
     return (
         <>
-            <CommonContext.Provider value={{ context, updateListAndType, updateSelectedCharacter }}>
+            <CommonContext.Provider value={{ context, updateListAndType, updateSelectedCharacter, updateList }}>
                 {children}
             </CommonContext.Provider>
         </>

@@ -1,20 +1,16 @@
-import { useAsync, useCommonState } from "../../hooks";
-import config from "../../services/config";
-import { ResponseList, Crew } from "../../models/index";
+import { useAsyncCrew, useCommonState } from "../../hooks";
 import Dashboard from "../../components/dashboard";
 import { useEffect } from "react";
+import adaptCrew from "../../adapters/adaptCrew";
 
 const CrewPage = () => {
-    const { data } = useAsync<ResponseList<Crew>>({
-        url: config.endpoints.crew.name,
-        method: config.endpoints.crew.method,
-        callOnLoad: true
-    });
+    const { data } = useAsyncCrew()
     const { updateListAndType } = useCommonState();
 
     useEffect(() => {
         if (data?.data.data) {
-            updateListAndType(data.data.data, 'crew')
+            const adaptedCrew = adaptCrew(data.data.data)
+            updateListAndType(adaptedCrew, 'crew')
         }
     }, [data?.data.data, updateListAndType])
 
@@ -23,6 +19,7 @@ const CrewPage = () => {
         return (
             <>
                 <h1>Crew</h1>
+                <hr className="divider" />
                 <Dashboard />
             </>
         );

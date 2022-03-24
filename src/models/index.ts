@@ -1,6 +1,7 @@
 interface Common {
     __id: string
     __v: string
+    fullname?: string
 }
 
 export interface Character extends Common {
