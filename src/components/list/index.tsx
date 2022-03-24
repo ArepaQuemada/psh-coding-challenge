@@ -4,10 +4,10 @@ import './index.scss'
 
 const List = () => {
     const { context } = useCommonState()
-
+    let list = context.filterList.length === 0 ? context.list : context.filterList
     return (  
         <>
-            {typedList[context.type](context.list)}
+            {typedList[context.type](list)}
         </>
     );
 }

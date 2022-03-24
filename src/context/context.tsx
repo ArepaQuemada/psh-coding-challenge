@@ -3,6 +3,7 @@ import { Character, Crew } from "../models";
 
 const initialState: Context = {
     list: [],
+    filterList: [],
     type: 'crew',
     selectedCharacter: {
         __id: '',
@@ -12,12 +13,13 @@ const initialState: Context = {
     },
 }
 
-type ListType = 'crew'| 'character'
+type ListType = 'crew' | 'character'
 
 export type Context = {
     list: Character[] | Crew[] | [],
+    filterList: Character[] | Crew[] | [],
     type: ListType
-    selectedCharacter: Character
+    selectedCharacter?: Character
 }
 
 
@@ -27,11 +29,18 @@ interface CommonContextInterface {
     updateListAndType: (List: Character[] | Crew[], type: ListType) => void
     updateSelectedCharacter: (character: Character) => void
     updateList: (List: Character[] | Crew[]) => void
+    updateFilterList: (List: Character[] | Crew[]) => void
+}
+
+interface ICommonContextProvider {
+    customContext?: Context,
+    spyOnupdateFilterList?: (List: Character[] | Crew[]) => void
+
 }
 
 export const CommonContext = React.createContext<CommonContextInterface | null>(null)
 
-const CommonContextProvider: React.FC = ({ children }) => {
+const CommonContextProvider: React.FC<ICommonContextProvider> = ({ customContext, spyOnupdateFilterList, children }) => {
 
     const [context, updateContext] = useState<Context>(initialState)
 
@@ -44,12 +53,23 @@ const CommonContextProvider: React.FC = ({ children }) => {
     }, [])
 
     const updateList = useCallback((list: Character[] | Crew[]) => {
-        updateContext(prev => ({...prev, list}))
+        updateContext(prev => ({ ...prev, list }))
     }, [])
+
+    const updateFilterList = useCallback((list: Character[] | Crew[]) => {
+        updateContext(prev => ({ ...prev, filterList: list }))
+    }, [])
+
 
     return (
         <>
-            <CommonContext.Provider value={{ context, updateListAndType, updateSelectedCharacter, updateList }}>
+            <CommonContext.Provider value={{
+                context: customContext ?? context,
+                updateListAndType,
+                updateSelectedCharacter,
+                updateList,
+                updateFilterList: spyOnupdateFilterList ?? updateFilterList
+            }}>
                 {children}
             </CommonContext.Provider>
         </>

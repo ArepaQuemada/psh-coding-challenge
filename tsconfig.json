@@ -29,5 +29,5 @@
       "src/**/*",
       "types/**/*" //Allow svg imports
     ],
-    "exclude": ["node_modules", "build"]
+    "exclude": ["node_modules", "build", "src/**/*.spec.tsx"]
   }
