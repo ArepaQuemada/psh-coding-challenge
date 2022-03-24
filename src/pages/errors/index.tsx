@@ -1,5 +1,5 @@
 interface IError {
-    [key: string]: string
+    [key: string]: string | null
 }
 
 const errors: IError = {

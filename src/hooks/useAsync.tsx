@@ -24,17 +24,26 @@ function useAsync<T>({ url, method, callOnLoad }: IUseAsync) {
         try {
             setLoading(true)
             const response = await axios[method]<T>(url, {
-                signal: abortController.signal
+                signal: abortController.signal,
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                }
             })
             setData(response)
         } catch (err) {
             if (abortController.signal.aborted) {
                 console.log('aborted async task')
+            } else {
+                console.error(err)
+                const toRedirectIfError = errors[data?.status ?? 'default']
+                if (toRedirectIfError) {
+                    navigate(toRedirectIfError)
+                }
             }
         } finally {
             setLoading(false)
         }
-    }, [method, url])
+    }, [data?.status, method, navigate, url])
 
     useEffect(() => {
         const abortController = new AbortController()
@@ -46,11 +55,6 @@ function useAsync<T>({ url, method, callOnLoad }: IUseAsync) {
             abortController.abort()
         }
     }, [callOnLoad, doFetch])
-
-    if (data?.status !== 200) {
-        const toRedirectIfError = errors[data?.status ?? 'default']
-        navigate(toRedirectIfError)
-    }
 
     return { data, doFetch, isLoading }
 }
