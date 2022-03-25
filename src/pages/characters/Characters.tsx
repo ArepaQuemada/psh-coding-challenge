@@ -51,7 +51,7 @@ const Characters = () => {
                         <input type='text' name='lastname' onChange={handleChange} value={formValues.lastname} placeholder='Type lastname'/>
                     </div>
                     <div>
-                        <button type='button' onClick={handleSubmit}>Añadir</button>
+                        <button className="btn" type='button' onClick={handleSubmit}>Añadir</button>
                     </div>
                 </form>
                 

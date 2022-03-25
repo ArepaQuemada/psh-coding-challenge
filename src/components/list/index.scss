@@ -26,4 +26,24 @@
     .list-container__small {
         color: var(--secondary-text);
     }
+    .list-container__pagination {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .list-container__page-btn {
+        padding: 0.5rem;
+        background-color: var(--secondary-color);
+        margin: 0.3rem;
+        color: var(--ligth-white);
+        opacity: 0.5;
+        border: none;
+        border-radius: 5px;
+        width: 35px;
+    }
+
+    .list-container__page-btn--active {
+        opacity: 1;
+    }
 }

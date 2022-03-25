@@ -49,7 +49,7 @@ const CrewPage = () => {
                         <input type='text' name='role' onChange={handleChange} value={formValues.role} placeholder='Type role' />
                     </div>
                     <div>
-                        <button type='button' onClick={handleSubmit}>Añadir</button>
+                        <button className="btn" type='button' onClick={handleSubmit}>Añadir</button>
                     </div>
                 </form>
             </>
