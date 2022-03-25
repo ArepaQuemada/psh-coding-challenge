@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/psh-coding-challenge/static/css/main.647769aa.css",
+    "main.js": "/psh-coding-challenge/static/js/main.abf0863e.js",
+    "index.html": "/psh-coding-challenge/index.html",
+    "main.647769aa.css.map": "/psh-coding-challenge/static/css/main.647769aa.css.map",
+    "main.abf0863e.js.map": "/psh-coding-challenge/static/js/main.abf0863e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.647769aa.css",
+    "static/js/main.abf0863e.js"
+  ]
+}
