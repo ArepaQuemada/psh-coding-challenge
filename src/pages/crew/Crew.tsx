@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import adaptCrew from "../../adapters/adaptCrew";
 import { generateRandomId } from "../../utilities";
 import { Crew } from "../../models";
+import Spinner from "../../components/spinner";
 
 const CrewPage = () => {
     const { data } = useAsyncCrew()
@@ -56,7 +57,7 @@ const CrewPage = () => {
         );
     }
 
-    return <>Loading</>;
+    return <Spinner />;
 };
 
 export default CrewPage;

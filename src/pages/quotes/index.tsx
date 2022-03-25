@@ -1,3 +1,4 @@
+import Spinner from "../../components/spinner";
 import useAsyncQuotes from "../../hooks/useAsyncQuotes";
 
 const Quotes = () => {
@@ -15,7 +16,7 @@ const Quotes = () => {
     }
     return (
         <>
-            Loading
+            <Spinner />
         </>
     )
 

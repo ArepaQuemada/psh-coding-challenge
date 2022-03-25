@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { adaptCharacter } from "../../adapters";
 import { Character } from "../../models";
 import { generateRandomId } from "../../utilities";
+import Spinner from "../../components/spinner";
 
 const Characters = () => {
     const { data } = useAsyncCharacter()
@@ -61,7 +62,7 @@ const Characters = () => {
 
     return (
         <>
-            Loading
+            <Spinner />
         </>
     );
 }
