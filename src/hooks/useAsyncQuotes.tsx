@@ -2,9 +2,9 @@ import config from "../services/config"
 import useAsync from "./useAsync"
 import { Quotes, ResponseData } from "../models";
 
-const useAsyncQuotes = (id: string) => {
+const useAsyncQuotes = () => {
     const { data, isLoading, doFetch } = useAsync<ResponseData<Quotes>>({
-        url: `${config.endpoints.quotes.name}/${id}`,
+        url: `${config.endpoints.quotes.name}`,
         method: config.endpoints.quotes.method,
         callOnLoad: true
     })

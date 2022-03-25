@@ -3,7 +3,9 @@ import './index.scss'
 const Container: React.FC = ({children}) => {
     return (  
         <section className="container">
-            {children}
+            <div className='container__content'>
+                {children}
+            </div>
         </section>
     );
 }

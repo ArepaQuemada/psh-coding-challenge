@@ -12,7 +12,7 @@ const config = {
             method: 'get' as Methods
         },
         quotes: {
-            name: '/quotes',
+            name: '/quotes/random',
             method: 'get' as Methods
         }
     }

@@ -1,9 +1,7 @@
-import { useParams } from "react-router-dom";
 import useAsyncQuotes from "../../hooks/useAsyncQuotes";
 
 const Quotes = () => {
-    let params = useParams<{id: string}>();
-    const { data } = useAsyncQuotes(params.id ?? '')
+    const { data } = useAsyncQuotes()
     
     if (data?.data.data) {
         return (  

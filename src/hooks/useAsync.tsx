@@ -35,7 +35,6 @@ function useAsync<T>({ url, method, callOnLoad }: IUseAsync) {
                 console.log('aborted async task')
             } else {
                 console.error(err)
-                console.log(data)
                 const toRedirectIfError = errors[data?.status ?? 'default']
                 if (toRedirectIfError) {
                     navigate(toRedirectIfError)

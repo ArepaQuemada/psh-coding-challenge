@@ -31,7 +31,7 @@ const Dashboard = () => {
     return (
         <>
             <section className="dashboard">
-                <h1>Dashboard</h1>
+                <h3>Dashboard</h3>
                 <fieldset>
                     <legend>Ordenar por</legend>
                     <input type='radio' id='name' name='sort_by' value='name' onChange={onChangeRadio}/>
@@ -40,7 +40,7 @@ const Dashboard = () => {
                     <label htmlFor='lastname'>Apellido</label>
 
                     <legend>Buscar por nombre completo</legend>
-                    <input type='text' name='fullname-searc' onChange={onChangeInput}/>
+                    <input type='text' name='fullname-searc' onChange={onChangeInput} placeholder='Search' />
                 </fieldset>
                 <List />
             </section>
